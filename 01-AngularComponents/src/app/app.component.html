@@ -5,7 +5,7 @@ Components Life Cycle & Input Output Examples
 
 </div>
 
-<employee *ngIf="empId===10" [empId]="empId" (empDetailsFetched)="showEmpDetails($event)"></employee>
+<employee  [empId]="empId" (empDetailsFetched)="showEmpDetails($event)"></employee>
 <div>
   {{ empDetails| json}}
 </div>
