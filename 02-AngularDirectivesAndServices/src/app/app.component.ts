@@ -9,8 +9,6 @@ import { EmployeeService } from './services/employee.service';
 })
 export class AppComponent  implements OnInit {
   title = 'ERPSystem';
-  empId:number=0;
-  empDetails:any;
   constructor(private deptService:DepartmentService,public empService:EmployeeService){
 
   }

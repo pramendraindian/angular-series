@@ -5,7 +5,7 @@ Services & Directives Examples
 
 </div>
 <div *ngFor="let emp of empService.employees">
-  <employee  [employee]="emp"></employee>
+  <employee [ngClass]="{'textColor':emp?.userId===100}"  [employee]="emp"></employee>
 </div>
 
 <router-outlet></router-outlet>

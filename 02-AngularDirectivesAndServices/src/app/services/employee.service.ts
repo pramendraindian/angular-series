@@ -8,9 +8,12 @@ import { Employee } from '../models/Employee';
 })
 export class EmployeeService {
   employees:Employee[]=[];
+  
   constructor(private http:HttpClient) { }
+
   getEmployees():Observable<Employee[]>
   {
+    
     return this.http.get<Employee[]>('assets/EmployeeDB.json');
   }
 }
