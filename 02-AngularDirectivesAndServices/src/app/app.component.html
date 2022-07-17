@@ -1,0 +1,12 @@
+Components Life Cycle & Input Output Examples
+<div>
+<input type="text" #empIdInput>
+<button (click)="queryEmployee(empIdInput.value)">Search</button>
+
+</div>
+
+<employee  [empId]="empId" (empDetailsFetched)="showEmpDetails($event)"></employee>
+<div>
+  {{ empDetails| json}}
+</div>
+<router-outlet></router-outlet>

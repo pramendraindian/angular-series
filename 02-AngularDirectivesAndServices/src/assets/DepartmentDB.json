@@ -1,0 +1,18 @@
+[
+    {
+        "departmentId":1,
+        "departmentName":"IT"
+    },
+    {
+        "departmentId":2,
+        "departmentName":"Finance"
+    },
+    {
+        "departmentId":3,
+        "departmentName":"Admin"
+    },
+    {
+        "departmentId":4,
+        "departmentName":"Media Relations"
+    }
+]
