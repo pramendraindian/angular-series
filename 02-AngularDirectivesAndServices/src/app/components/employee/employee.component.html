@@ -1,9 +1,19 @@
 <p appHighlight>Employee Details</p>
 <div>
-    Employee Id : {{employee?.userId}}
-    <br>
-    FullName: {{employee?.fullName}}
-    <br>
-    Department :{{employee?.departmentId | department }}
+    <table>
+        <tr>
+            <td>Employee Id</td>
+            <td>: {{employee?.userId}}</td>
+        </tr>
+        <tr>
+            <td>FullName</td>
+            <td>: {{employee?.fullName}}</td>
+        </tr>
+        <tr>
+            <td>Department</td>
+            <td>: {{employee?.departmentId | department }}</td>
+        </tr>
+    </table>
+     
 </div>
 <hr>
