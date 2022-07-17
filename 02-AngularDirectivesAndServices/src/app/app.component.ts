@@ -18,15 +18,7 @@ export class AppComponent  implements OnInit {
     this.loadDepartments();
     this.loadEmployees();
   }
-  queryEmployee(eId:string)
-  {
-    this.empId=Number(eId);
-  }
-  showEmpDetails(employeeDetail:any)
-  {
-    console.warn(employeeDetail);
-    this.empDetails=employeeDetail;
-  }
+ 
   loadEmployees()
   {
     this.empService.getEmployees().subscribe(
