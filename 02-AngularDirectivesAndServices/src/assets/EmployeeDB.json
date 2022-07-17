@@ -3,12 +3,12 @@
         "userId":100,
         "fullName":"Singh, Pramendra",
         "city":"New Delhi",
-        "department":1
+        "departmentId":1
     },
     {
         "userId":101,
         "fullName":"Pandey, Ravi",
         "city":"Lucknow",
-        "department":2
+        "departmentId":2
     }
 ]

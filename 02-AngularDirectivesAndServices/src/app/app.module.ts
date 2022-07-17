@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HighlightDirective } from './directives/highlight.directive';
+import { DepartmentPipe } from './pipes/department.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
-    HighlightDirective
+    HighlightDirective,
+    DepartmentPipe
   ],
   imports: [
     BrowserModule,

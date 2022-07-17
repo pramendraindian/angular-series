@@ -4,9 +4,8 @@ Services & Directives Examples
 <button (click)="queryEmployee(empIdInput.value)" appHighlight>Search</button>
 
 </div>
-
-<employee  [empId]="empId" (empDetailsFetched)="showEmpDetails($event)"></employee>
-<div>
-  {{ empDetails| json}}
+<div *ngFor="let emp of empService.employees">
+  <employee  [employee]="emp"></employee>
 </div>
+
 <router-outlet></router-outlet>

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class DepartmentService {
 
+  departments:Department[]=[];
   constructor(private http:HttpClient) { 
 
   }

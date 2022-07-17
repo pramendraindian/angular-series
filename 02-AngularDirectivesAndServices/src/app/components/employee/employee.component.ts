@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output,EventEmitter, OnChanges, SimpleChanges, OnDestroy, AfterViewInit, DoCheck } from '@angular/core';
+import { Employee } from 'src/app/models/Employee';
 
 
 @Component({
@@ -8,8 +9,7 @@ import { Component, Input, OnInit, Output,EventEmitter, OnChanges, SimpleChanges
   
 })
 export class EmployeeComponent implements OnInit,OnChanges,OnDestroy,AfterViewInit,DoCheck {
-@Input() empId:number=0;
-@Output() empDetailsFetched:EventEmitter<any>=new EventEmitter()
+@Input() employee:Employee= {} as Employee;
 @Output() empDetailsAdded:EventEmitter<void>=new EventEmitter()
   constructor() { }
   ngDoCheck(): void {
@@ -23,7 +23,6 @@ export class EmployeeComponent implements OnInit,OnChanges,OnDestroy,AfterViewIn
   }
   ngOnChanges(changes: SimpleChanges): void {
   console.warn('ngOnChanges fired');
-  this.empDetailsFetched.emit({empId:this.empId,fullName:'Singh, Pramendra'})
   this.empDetailsAdded.emit();
   }
 

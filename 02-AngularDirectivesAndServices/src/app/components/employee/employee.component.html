@@ -1,1 +1,9 @@
-<p appHighlight>employee works!</p>
+<p appHighlight>Employee Details</p>
+<div>
+    Employee Id : {{employee?.userId}}
+    <br>
+    FullName: {{employee?.fullName}}
+    <br>
+    Department :{{employee?.departmentId | department }}
+</div>
+<hr>
