@@ -6,4 +6,8 @@ export interface Employee extends User
     // fullName:string;
     // city:string;
     departmentId:number;
+    firstName:string;
+    lastName:string;
+    nameCaption:string;
+    isSelected:boolean;
 }

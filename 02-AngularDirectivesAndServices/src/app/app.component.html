@@ -4,8 +4,20 @@ Services & Directives Examples
 <button  appHighlight>Search</button>
 
 </div>
+
+<app-employee-list></app-employee-list>
+<p>employee component</p>
 <div *ngFor="let emp of empService.employees">
   <employee [ngClass]="{'textColor':emp?.userId===100}"  [employee]="emp"></employee>
+  <span *ngIf="emp?.lastName ;else lastNameNoAvlbl">
+    contactnation
+    {{(emp?.lastName)?(emp?.lastName):(emp?.firstName)}}
+    <hr>
+    {{emp?.nameCaption}}
+  </span>
+  <span>
+    {{emp?.isSelected}}
+  </span>
 </div>
-
+<ng-template #lastNameNoAvlbl>Last Name not available</ng-template>
 <router-outlet></router-outlet>

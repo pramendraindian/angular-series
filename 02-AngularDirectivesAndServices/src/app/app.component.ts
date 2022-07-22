@@ -23,6 +23,11 @@ export class AppComponent  implements OnInit {
       results=>{
         console.log(results);
         this.empService.employees=results;
+
+        this.empService.employees?.forEach(employee=>{
+          employee.nameCaption=employee.lastName?employee.lastName:employee.firstName
+
+        })
       }
 )
   }
