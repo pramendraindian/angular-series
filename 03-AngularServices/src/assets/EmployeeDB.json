@@ -1,0 +1,19 @@
+[
+    {
+        "userId":100,
+        "fullName":"Singh, Pramendra",
+        "city":"New Delhi",
+        "departmentId":1,
+        "firstName":"Pramendra",
+        "lastName":null
+    },
+    {
+        "userId":101,
+        "fullName":"Pandey, Ravi",
+        "city":"Lucknow",
+        "departmentId":2,
+        
+        "firstName":"Ravi",
+        "lastName":"Pandey"
+    }
+]
