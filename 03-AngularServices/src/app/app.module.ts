@@ -9,6 +9,7 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { DepartmentPipe } from './pipes/department.pipe';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { AdvancedComponent } from './components/advanced/advanced.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +17,8 @@ import { UserListComponent } from './components/user-list/user-list.component';
     HighlightDirective,
     DepartmentPipe,
     EmployeeListComponent,
-    UserListComponent
+    UserListComponent,
+    AdvancedComponent
   ],
   imports: [
     BrowserModule,
