@@ -13,21 +13,21 @@ export class EmployeeComponent implements OnInit,OnChanges,OnDestroy,AfterViewIn
 @Output() empDetailsAdded:EventEmitter<void>=new EventEmitter()
   constructor() { }
   ngDoCheck(): void {
-    console.warn('ngDoCheck fired');
+    // console.warn('ngDoCheck fired');
   }
   ngAfterViewInit(): void {
-    console.warn('ngAfterViewInit fired');
+    // console.warn('ngAfterViewInit fired');
   }
   ngOnDestroy(): void {
-    console.warn('ngOnDestroy fired');
+    // console.warn('ngOnDestroy fired');
   }
   ngOnChanges(changes: SimpleChanges): void {
-  console.warn('ngOnChanges fired');
+  // console.warn('ngOnChanges fired');
   this.empDetailsAdded.emit();
   }
 
   ngOnInit(): void {
-    console.warn('ngOnInit fired');
+    // console.warn('ngOnInit fired');
    
   }
   

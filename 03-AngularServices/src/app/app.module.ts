@@ -8,13 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { HighlightDirective } from './directives/highlight.directive';
 import { DepartmentPipe } from './pipes/department.pipe';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
     HighlightDirective,
     DepartmentPipe,
-    EmployeeListComponent
+    EmployeeListComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

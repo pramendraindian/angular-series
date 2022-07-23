@@ -21,7 +21,7 @@ export class AppComponent  implements OnInit {
   {
     this.empService.getEmployees().subscribe(
       results=>{
-        console.log(results);
+        //console.log(results);
         this.empService.employees=results;
 
         this.empService.employees?.forEach(employee=>{
@@ -36,7 +36,7 @@ export class AppComponent  implements OnInit {
   {
     this.deptService.getDepartments().subscribe(
       results=>{
-        console.log(results);
+        // console.log(results);
         this.deptService.departments=results;
       }
 )
