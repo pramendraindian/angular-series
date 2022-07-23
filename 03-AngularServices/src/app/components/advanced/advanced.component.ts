@@ -9,6 +9,7 @@ import { map, filter, tap, takeLast, scan, startWith, mergeMap, finalize, ignore
 })
 export class AdvancedComponent implements OnInit {
 
+  posts:unknown[]=[];
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -43,14 +44,17 @@ export class AdvancedComponent implements OnInit {
       ))
     ).subscribe(batchCommentsResponse => {
       // Add to global queue
-      console.log(batchCommentsResponse);
+      
+      this.posts =[...this.posts,...batchCommentsResponse as unknown[]];
+      console.log(this.posts);
+    
     });
   }
   
   
   getPostDetails(userIdsList: any[]) {
     const arrayOfObservables = userIdsList.map((userId, index) => {
-      //if (index === 1) return throwError({message: 'Vah-vah!'}); // testin with error
+      // if (index === 1) return of({message: 'Error Occured!'}); // testin with error
       return this.http.get('https://jsonplaceholder.typicode.com/comments/' + userId)
     }
     )
