@@ -8,7 +8,7 @@ import { map, filter, tap, takeLast, scan, startWith, mergeMap, finalize, ignore
   styleUrls: ['./advanced.component.css']
 })
 export class AdvancedComponent implements OnInit {
-
+  isProcessingCompleted = false;
   posts: unknown[] = [];
   recordCount = 0;
   constructor(private http: HttpClient) { }
@@ -20,6 +20,7 @@ export class AdvancedComponent implements OnInit {
   callInBatch() {
     const postIds = [];
     const batchSize = 6;
+    this.posts=[];
     for (let i = 1; i < 510; i++) {
       postIds.push(i);
     }
@@ -28,20 +29,23 @@ export class AdvancedComponent implements OnInit {
     while (postIds?.length > 0) {
       batchNo++;
       const curentBatchSet = postIds.splice(0, batchSize)
-      console.warn(`Batch set = ${curentBatchSet}`)
+      // console.warn(`Batch set = ${curentBatchSet}`)
       this.processSpecificBatch(curentBatchSet, batchNo)
     }
-   
+
   }
 
   processSpecificBatch(postIds: number[], batchNo: number) {
     const result$ = this.getCommentDetails(postIds, batchNo);
     result$.pipe(
       // OPTIMIZE IT WITH UNIT TESTING
-      delay(batchNo===1?0: batchNo*100), // Add a delay to avoid all the calls to be triggered in one go
+      delay(batchNo === 1 ? 0 : batchNo * 100), // Add a delay to avoid all the calls to be triggered in one go
       mergeMap(([finalResult, progress]) => merge(
         progress.pipe(
-          tap((value) => { console.log(`Batch # ${batchNo} completed ${value} %`) }),
+          tap((value) => { 
+            //console.log(`Batch # ${batchNo} completed ${value} %`) 
+          }
+            ),
           //ignoreElements() // DON'T EMIT PROGRESS BAR RESULTS
         ),
         finalResult
@@ -60,10 +64,10 @@ export class AdvancedComponent implements OnInit {
 
       },
       error: err => {
-
+        console.warn(`Error: ${err.status}`);
       },
-      complete() {
-
+      complete:()=> {
+        console.warn(`Copleted records ${this.posts.length}`);
 
       },
 
