@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { forkJoin, Subject, merge, of, defer, concat, throwError, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { map, filter, tap, takeLast, scan, startWith, mergeMap, finalize, ignoreElements } from 'rxjs/operators';
+import { map, filter, tap, takeLast, scan, startWith, mergeMap, finalize, ignoreElements, catchError } from 'rxjs/operators';
 @Component({
   selector: 'app-advanced',
   templateUrl: './advanced.component.html',
@@ -18,7 +18,7 @@ export class AdvancedComponent implements OnInit {
 
  callInBatch() {
     const postIds = [];
-    for (let i = 1; i < 501; i++) {
+    for (let i = 498; i < 503; i++) {
       postIds.push(i);
     }
 
@@ -46,7 +46,8 @@ export class AdvancedComponent implements OnInit {
       // Add to global queue
       
       this.posts =[...this.posts,...batchCommentsResponse as unknown[]];
-      // console.log(this.posts);
+      batchCommentsResponse
+      console.log(batchCommentsResponse);
     
     });
   }
@@ -55,7 +56,12 @@ export class AdvancedComponent implements OnInit {
   getPostDetails(userIdsList: any[]) {
     const arrayOfObservables = userIdsList.map((userId, index) => {
       // if (index === 1) return of({message: 'Error Occured!'}); // testin with error
-      return this.http.get('https://jsonplaceholder.typicode.com/comments/' + userId)
+      return this.http.get('https://jsonplaceholder.typicode.com/comments/' + userId).pipe(
+        //************************* Error Handling in fork Join****************************/
+        // DO ERROR HANDLING AT THE INDIDUAL API CALL
+        //// This is very very important to catch error to avoid killing observabel
+        catchError(err=>of({isError:true,error:err}))
+        );
     }
     )
     return this.forkJoinWithProgress(arrayOfObservables)

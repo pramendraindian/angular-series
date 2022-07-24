@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 
@@ -22,7 +23,7 @@ errorMessage='';
         this.isProcessing=false; 
         console.log(result) 
       },
-      (err) => {
+      (err:HttpErrorResponse) => {
         this.isProcessing=false;
         console.warn(err);
         this.errorMessage=`Error #${err.status} . Please contact app support team!`
