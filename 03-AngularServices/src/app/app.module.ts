@@ -10,6 +10,7 @@ import { DepartmentPipe } from './pipes/department.pipe';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { AdvancedComponent } from './components/advanced/advanced.component';
+import { BulkLoadComponent } from './components/bulk-load/bulk-load.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,8 @@ import { AdvancedComponent } from './components/advanced/advanced.component';
     DepartmentPipe,
     EmployeeListComponent,
     UserListComponent,
-    AdvancedComponent
+    AdvancedComponent,
+    BulkLoadComponent
   ],
   imports: [
     BrowserModule,

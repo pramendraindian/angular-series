@@ -1,0 +1,6 @@
+<p>bulk-load works!</p>
+<button (click)="processInBatch()">Start Loading 500 records</button>
+<p>{{progressMessage}}</p>
+<div *ngIf="isProcessing">
+<img src="/assets/processing.gif" alt="processing" height="50px" width="50px"/>
+</div>
