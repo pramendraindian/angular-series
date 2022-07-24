@@ -7,19 +7,29 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-
+isProcessing=false;
+errorMessage='';
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.loadUserList();
   }
   loadUserList() {
+    this.isProcessing=true;
+    this.errorMessage='';
     this.userService.getUserListCommon().subscribe(
-      (result) => { console.log(result) },
+      (result) => {
+        this.isProcessing=false; 
+        console.log(result) 
+      },
       (err) => {
+        this.isProcessing=false;
         console.warn(err);
+        this.errorMessage=`Error #${err.status} . Please contact app support team!`
+
       },
       () => {
+        this.isProcessing=false;
         console.warn('Request completed');
       }
 

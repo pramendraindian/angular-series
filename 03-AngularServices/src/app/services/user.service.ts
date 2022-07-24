@@ -8,7 +8,11 @@ import { ExternalUser } from '../models/ExternalUser';
 })
 export class UserService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+   
+   }
+
+
   getUserList():Observable<ExternalUserListResponse>
   {
     return this.http.get<ExternalUserListResponse>('https://reqres.in/api/users?page=2');
@@ -21,7 +25,7 @@ export class UserService {
 
   getUserListCommon():Observable<ExternalUserCommonResponse<ExternalUser[]>>
   {
-    return this.http.get<ExternalUserCommonResponse<ExternalUser[]>>('https://reqres.in/api/users/xx?page=2');
+    return this.http.get<ExternalUserCommonResponse<ExternalUser[]>>('https://reqres.in/api/users/sss?page=2');
   }
 
   getSingleUserCommon():Observable<ExternalUserCommonResponse<ExternalUser>>

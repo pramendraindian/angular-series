@@ -46,7 +46,7 @@ export class AdvancedComponent implements OnInit {
       // Add to global queue
       
       this.posts =[...this.posts,...batchCommentsResponse as unknown[]];
-      console.log(this.posts);
+      // console.log(this.posts);
     
     });
   }
