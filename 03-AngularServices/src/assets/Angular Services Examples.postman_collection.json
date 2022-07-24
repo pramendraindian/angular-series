@@ -7,21 +7,9 @@
 	"item": [
 		{
 			"name": "GET-USER-LIST",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"Id\": 78912,\r\n  \"Customer\": \"Jason Sweet\",\r\n  \"Quantity\": 1,\r\n  \"Price\": 18.90,\r\n  \"Radhey\":\"hello\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
 					"raw": "https://reqres.in/api/users?page=2",
 					"protocol": "https",
@@ -47,7 +35,20 @@
 			"name": "GET USER SINGLE",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
 			},
 			"response": []
 		},
@@ -87,7 +88,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\":2,\r\n    \"job\": \"Architect\",\r\n    \"first_name\": \"Pramendra\",\r\n    \"last_name\": \"Singh\"\r\n}",
+					"raw": "{\r\n    \"id\":768,\r\n    \"job\": \"Architect\",\r\n    \"first_name\": \"Pramendra\",\r\n    \"last_name\": \"Singh\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -113,8 +114,21 @@
 		{
 			"name": "USER-DELETE",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
 			},
 			"response": []
 		},
