@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,11 +10,19 @@ import { UserService } from 'src/app/services/user.service';
 export class UserListComponent implements OnInit {
 isProcessing=false;
 errorMessage='';
+
+
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+
     this.loadUserList();
+    // window.addEventListener("beforeunload", this.functionToRun);
+
+ 
   }
+  
   loadUserList() {
     this.isProcessing=true;
     this.errorMessage='';
