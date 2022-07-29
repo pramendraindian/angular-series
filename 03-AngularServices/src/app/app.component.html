@@ -1,11 +1,13 @@
 Services  Examples
 <div>
+  <button (click)="openWindow()">Open</button><button (click)="closeWindow()">Close</button>
 <app-bulk-load></app-bulk-load>
 <app-user-list></app-user-list>
 </div>
 
 <app-employee-list></app-employee-list>
 <p>employee component</p>
+<button (click)="newUser()">Add New Employee - POST Call</button>
 <div *ngFor="let emp of empService.employees">
   <employee [ngClass]="{'textColor':emp?.userId===100}"  [employee]="emp"></employee>
   <span *ngIf="emp?.lastName ;else lastNameNoAvlbl">

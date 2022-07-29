@@ -8,54 +8,56 @@ import { ExternalUser } from '../models/ExternalUser';
 })
 export class UserService {
 
-  constructor(private http:HttpClient) {
-   
-   }
+  constructor(private http: HttpClient) {
+
+  }
 
 
-  getUserList():Observable<ExternalUserListResponse>
-  {
+  getUserList(): Observable<ExternalUserListResponse> {
     return this.http.get<ExternalUserListResponse>('https://reqres.in/api/users?page=2');
   }
 
-  getSingleUser(userId:number):Observable<ExternalUserResponse>
-  {
+  getSingleUser(userId: number): Observable<ExternalUserResponse> {
     return this.http.get<any>(`https://reqres.in/api/users/${userId}`);
   }
 
-  getUserListCommon():Observable<ExternalUserCommonResponse<ExternalUser[]>>
-  {
+  getUserListCommon(): Observable<ExternalUserCommonResponse<ExternalUser[]>> {
     return this.http.get<ExternalUserCommonResponse<ExternalUser[]>>('https://reqres.in/api/users/sss?page=2');
   }
 
-  getSingleUserCommon():Observable<ExternalUserCommonResponse<ExternalUser>>
-  {
+  getSingleUserCommon(): Observable<ExternalUserCommonResponse<ExternalUser>> {
     return this.http.get<ExternalUserCommonResponse<ExternalUser>>('https://reqres.in/api/users?page=2');
   }
 
-  addUser()
-  {
-    const reqBody={
+  addUser() {
+    const reqBody = {
       first_name: "Pramendra",
       last_name: "Singh",
-      job:'Architect'
+      job: 'Architect'
     }
-    return this.http.post<any>(`https://reqres.in/api/users`,reqBody);
+
+    const customHeader = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Trace_Id': '12345'
+    }
+
+
+    return this.http.post<any>(`https://reqres.in/api/users`, reqBody, { headers: customHeader });
   }
 
-  updateUser(userId:number)
-  {
-    const reqBody={
-      id:userId,
+  updateUser(userId: number) {
+    const reqBody = {
+      id: userId,
       first_name: "Pramendra",
       last_name: "Singh",
-      job:'Architect'
+      job: 'Architect'
     }
-    return this.http.put<any>(`https://reqres.in/api/users/${userId}`,reqBody);
+    return this.http.put<any>(`https://reqres.in/api/users/${userId}`, reqBody);
   }
 
-  deleteUser(userId:number)
-  {
+  deleteUser(userId: number) {
     return this.http.delete<any[]>(`https://reqres.in/api/users/${userId}`);
   }
 }
