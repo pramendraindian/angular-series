@@ -23,7 +23,7 @@ export class BrowserWarningComponent implements OnInit {
       window.onbeforeunload = null;
       return true; // no browser alert
     }
-    return false;// means broeser alert
+    return false;// means browser alert
   }
  
   constructor(private browserService:BrowserService) { 
