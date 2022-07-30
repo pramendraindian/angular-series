@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    console.warn('on init');
+    this.browserService.isToNavigateWithoutWarning=false;
     this.subscribeToBrowserEvents();
   }
   subscribeToBrowserEvents()
