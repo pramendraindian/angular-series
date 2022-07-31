@@ -1,0 +1,25 @@
+<p>merge-map-exaample works!</p>
+<form [formGroup]="myForm">
+      
+    <div class="row">
+      <div class="col-3"><input name="searchTerm" formControlName="searchTerm" placeholder="Enter search criteria"/>
+      </div>
+    </div>
+    <div *ngFor="let u of users">
+   
+    <div class="row">
+          <div class="col-3">Id:</div>
+          <div class="col-3">{{u?.id}}</div>
+    </div>
+    <div class="row">
+      <div class="col-3">Name:</div>
+      <div class="col-3">{{u?.first_name +' '+u?.last_name }}</div>
+  </div>
+  <div class="row">
+    <div class="col-3">Photo:</div>
+    <div class="col-3"><img src="{{u?.avatar}}" ></div>
+</div>
+</div>
+
+</form>
+

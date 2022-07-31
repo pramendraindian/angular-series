@@ -11,30 +11,7 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit,OnDestroy {
   title = 'ERPSystem';
   isClosing=false;
-  @HostListener('window:unload', ['$event'])
-  unloadHandler(event:any) {
-      // this.PostCall();
-  }
-  
-  @HostListener('window:beforeunload', ['$event'])
-  beforeUnloadHander(event:any) {
-    console.log(this.isClosing);
-    if(this.isClosing) // While window.close remove leaving alerts
-    {
-      window.removeEventListener('beforeunload',this.beforeUnloadHander,false);
-      window.onbeforeunload=null;
-      return true; // no alert
-    }
-      return false;// means alert
-  }
-    openGoogle()
-  {
-    window.location.href="https://google.com"
-  }
-  closeWindow() {
-    this.isClosing=true;
-    window.location.href="https://google.com"
-  }
+ 
 
   constructor(private deptService: DepartmentService, public empService: EmployeeService, private userService: UserService) {
 
@@ -42,9 +19,6 @@ export class AppComponent implements OnInit,OnDestroy {
 
   
   ngOnDestroy(): void {
-    debugger;
-    alert('hello');
-    // window.addEventListener("beforeunload", function (e) { return true; });
   }
   ngOnInit(): void {
  

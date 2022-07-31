@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeComponent } from './components/employee/employee.component';
@@ -11,6 +11,10 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
 import { UserListComponent } from './components/user-list/user-list.component';
 import { AdvancedComponent } from './components/advanced/advanced.component';
 import { BulkLoadComponent } from './components/bulk-load/bulk-load.component';
+import { MergeMapExaampleComponent } from './components/advanced/merge-map-exaample/merge-map-exaample.component';
+import { SwitchMapExampleComponent } from './components/advanced/switch-map-example/switch-map-example.component';
+import { ConcatMapExampleComponent } from './components/advanced/concat-map-example/concat-map-example.component';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,11 +24,16 @@ import { BulkLoadComponent } from './components/bulk-load/bulk-load.component';
     EmployeeListComponent,
     UserListComponent,
     AdvancedComponent,
-    BulkLoadComponent
+    BulkLoadComponent,
+    MergeMapExaampleComponent,
+    SwitchMapExampleComponent,
+    ConcatMapExampleComponent,
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,// Important to use reactive forms
     AppRoutingModule,
     HttpClientModule // Important import for services
   ],
