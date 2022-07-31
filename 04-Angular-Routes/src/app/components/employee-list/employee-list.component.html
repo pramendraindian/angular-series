@@ -1,0 +1,42 @@
+<div >
+    <div>
+        <table>
+            <tr>
+            <th>
+                <input type="checkbox" (change)="masterSelect($event)" [(ngModel)]="isMasterSelected" />
+            </th>
+            <th>
+                User Id
+            </th>
+            <th>
+                Full Name
+            </th>
+            <th>
+                Department
+            </th>
+        </tr>
+            <tr *ngFor="let emp of empService.employees">
+               <td> <input type="checkbox" (change)="selectEmployee($event,emp)" [(ngModel)]="emp.isSelected"/></td>
+                <!--
+                <input type="checkbox" [(ngModel)]="masterSelected" name="list_name" value="m1"
+                  (change)="checkUncheckAll()" /> <strong>Select/ Unselect All</strong>
+                -->
+            
+                
+                <td>{{emp?.userId}}</td>
+           
+          
+               
+                <td>{{emp?.fullName}}</td>
+            
+           
+                
+                <td>{{emp?.departmentId  }}</td>
+            </tr>
+        </table>
+         
+    </div>
+    <hr>
+    
+   
+  </div>
