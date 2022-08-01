@@ -49,8 +49,11 @@ export class MergeMapExaampleComponent implements OnInit {
   }
 
   lazySearch() {
-    this.userService.searchUserUsingMergeMap(this.myForm.controls['searchTerm'].valueChanges).subscribe(
+    const observable1=this.myForm.controls['searchTerm'].valueChanges;
+    observable1.subscribe(searchTerm=>{this.isLoading=true;});
+    this.userService.searchUserUsingMergeMap(observable1).subscribe(
       result => {//success
+        this.isLoading = false;
         console.warn(result);
         if (result instanceof HttpErrorResponse) {
           this.users = [];
@@ -74,7 +77,10 @@ export class MergeMapExaampleComponent implements OnInit {
         console.log(err);
       },
       () =>// It will never reach in case of switvhMap
-      { console.log('search complete') }
+      { 
+        this.isLoading = false;
+        console.log('search complete') 
+      }
     );
 
 
