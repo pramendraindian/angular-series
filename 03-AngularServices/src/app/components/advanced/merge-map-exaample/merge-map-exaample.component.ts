@@ -25,6 +25,13 @@ export class MergeMapExaampleComponent implements OnInit {
   ngOnInit(): void {
     this.lazySearch();
   }
+  clearSearch()
+  {
+    this.users=[];
+    this.isLoading=false;
+    this.user={} as ExternalUser;
+
+  }
   emitValues()
   {
     this.myForm.controls['searchTerm'].setValue(1);
@@ -55,10 +62,11 @@ export class MergeMapExaampleComponent implements OnInit {
             this.users = result?.data;
           }
           else {
-            this.users = [];
-            this.user = result.data as ExternalUser;
-            console.log(this.user);
-            this.users.push(this.user);
+            if (!this.users?.some(user => user.id === result?.data?.id)) {
+              this.user = result.data as ExternalUser;
+              console.log(this.user);
+              this.users.push(this.user);
+            }
           }
         }
       }
