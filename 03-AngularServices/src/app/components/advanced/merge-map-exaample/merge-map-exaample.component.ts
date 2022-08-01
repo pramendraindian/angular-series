@@ -13,6 +13,8 @@ export class MergeMapExaampleComponent implements OnInit {
   myForm: FormGroup
   user: ExternalUser = {} as ExternalUser;
   users: ExternalUser[] = [];
+  isLoading=false;
+  message='';
   constructor(private formBuilder: FormBuilder, private userService: UserService) {
     this.myForm = this.formBuilder.group({
       searchTerm: ['']
@@ -23,6 +25,22 @@ export class MergeMapExaampleComponent implements OnInit {
   ngOnInit(): void {
     this.lazySearch();
   }
+  emitValues()
+  {
+    this.myForm.controls['searchTerm'].setValue(1);
+    this.myForm.controls['searchTerm'].setValue(2);
+    this.myForm.controls['searchTerm'].setValue(3);
+    this.myForm.controls['searchTerm'].setValue(4);
+    this.myForm.controls['searchTerm'].setValue(5);
+    this.myForm.controls['searchTerm'].setValue(6);
+    this.myForm.controls['searchTerm'].setValue(7);
+    this.myForm.controls['searchTerm'].setValue(8);
+    this.myForm.controls['searchTerm'].setValue(9);
+    this.myForm.controls['searchTerm'].setValue(10);
+    this.myForm.controls['searchTerm'].setValue(11);
+    this.myForm.controls['searchTerm'].setValue(12);
+  }
+
   lazySearch() {
     this.userService.searchUserUsingMergeMap(this.myForm.controls['searchTerm'].valueChanges).subscribe(
       result => {//success

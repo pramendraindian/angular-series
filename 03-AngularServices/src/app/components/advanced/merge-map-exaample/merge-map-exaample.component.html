@@ -5,6 +5,14 @@
       <div class="col-3"><input name="searchTerm" formControlName="searchTerm" placeholder="Enter search criteria"/>
       </div>
     </div>
+    <div class="row">
+      <div class="col-3">
+        <button class="" (click)="emitValues()">Search</button>
+      </div>
+    </div>
+    <div class="row">
+      <app-progress-bar [isLoading]="isLoading" [message]="message"></app-progress-bar>
+    </div>
     <div *ngFor="let u of users">
    
     <div class="row">

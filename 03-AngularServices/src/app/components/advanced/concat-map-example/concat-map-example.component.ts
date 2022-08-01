@@ -25,6 +25,21 @@ export class ConcatMapExampleComponent implements OnInit {
   ngOnInit(): void {
     this.lazySearch();
   }
+  emitValues()
+  {
+    this.myForm.controls['searchTerm'].setValue(1);
+    this.myForm.controls['searchTerm'].setValue(2);
+    this.myForm.controls['searchTerm'].setValue(3);
+    this.myForm.controls['searchTerm'].setValue(4);
+    this.myForm.controls['searchTerm'].setValue(5);
+    this.myForm.controls['searchTerm'].setValue(6);
+    this.myForm.controls['searchTerm'].setValue(7);
+    this.myForm.controls['searchTerm'].setValue(8);
+    this.myForm.controls['searchTerm'].setValue(9);
+    this.myForm.controls['searchTerm'].setValue(10);
+    this.myForm.controls['searchTerm'].setValue(11);
+    this.myForm.controls['searchTerm'].setValue(12);
+  }
   lazySearch() {
     const observable1=this.myForm.controls['searchTerm'].valueChanges;
     observable1.subscribe(searchTerm=>{this.isLoading=true;});

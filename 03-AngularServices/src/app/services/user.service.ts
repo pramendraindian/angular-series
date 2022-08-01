@@ -71,7 +71,7 @@ export class UserService {
       tap(emit=>console.log("emitting#"+emit)),
       // map(term => term),
       //startWith('1'),
-      debounceTime(500),
+      // debounceTime(500),
       // distinctUntilChanged(),
       switchMap(term => this.getSingleUser(term).pipe(
           //catchError(err => throwError(err))  // This will fail after 1 error
@@ -89,7 +89,7 @@ export class UserService {
       tap(emit=>console.log("emitting#"+emit)),
       // map(term => term),
       // startWith('1'),
-      debounceTime(1000),
+      // debounceTime(1000),
       // distinctUntilChanged(),
       concatMap(term => this.getSingleUser(term).pipe(
           //catchError(err => throwError(err))  // This will fail after 1 error
@@ -105,7 +105,7 @@ export class UserService {
    const serachResult= searchStream.pipe(
       // tap(emit=>console.log("emitting#"+emit)),
       //startWith('1'),
-      debounceTime(1000),
+      // debounceTime(1000),
       // distinctUntilChanged(),
       mergeMap(term =>this.getSingleUser(term).pipe(
           //catchError(err => throwError(err))  // This will fail after 1 error

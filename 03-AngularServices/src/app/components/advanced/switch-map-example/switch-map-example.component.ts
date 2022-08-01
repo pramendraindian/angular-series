@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { of } from 'rxjs';
 import { ExternalUser } from 'src/app/models/ExternalUser';
 import { UserService } from 'src/app/services/user.service';
 
@@ -24,6 +25,42 @@ export class SwitchMapExampleComponent implements OnInit {
 
   ngOnInit(): void {
     this.lazySearch();
+  }
+  emitValues()
+  {
+    this.myForm.controls['searchTerm'].setValue(1);
+    this.myForm.controls['searchTerm'].setValue(2);
+    this.myForm.controls['searchTerm'].setValue(3);
+    this.myForm.controls['searchTerm'].setValue(4);
+    this.myForm.controls['searchTerm'].setValue(5);
+    this.myForm.controls['searchTerm'].setValue(6);
+    this.myForm.controls['searchTerm'].setValue(7);
+    this.myForm.controls['searchTerm'].setValue(8);
+    this.myForm.controls['searchTerm'].setValue(9);
+    this.myForm.controls['searchTerm'].setValue(10);
+    this.myForm.controls['searchTerm'].setValue(11);
+    this.myForm.controls['searchTerm'].setValue(12);
+
+    /*
+    const observable1=of(1,2,3,4,5,6,7,8,9,10);
+    this.userService.searchUserUsingSwitchMap(observable1).subscribe(
+      result => {//success
+        console.warn(result);
+      }
+      , err => { // It will never reach in case of switvhMap
+        this.isLoading=false;
+        console.log(err);
+      },
+      () =>// It will never reach in case of switvhMap
+      { 
+        this.isLoading=false;
+        console.log('search complete') 
+      }
+    );
+    */
+
+
+
   }
   lazySearch() {
     const observable1=this.myForm.controls['searchTerm'].valueChanges;
