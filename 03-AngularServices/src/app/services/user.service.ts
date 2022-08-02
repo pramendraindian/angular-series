@@ -77,6 +77,10 @@ export class UserService {
           //catchError(err => throwError(err))  // This will fail after 1 error
           // catchError(err => {return of(err)})
           catchError(err => {return of({data:{id: Number(term)},error:err})}),
+          finalize(()=>{
+          
+            console.warn(`request ${term} completed`);
+          })
         )
     )
     );
@@ -96,7 +100,8 @@ export class UserService {
         // catchError(err => {return of(err)}), // Uncomment and see the difference
         catchError(err => {return of({data:{id: Number(term)},error:err})}),
         finalize(()=>{
-            console.warn('inner request completed');
+          
+            console.warn(`request ${term} completed`);
           })
         )
     )
@@ -115,6 +120,10 @@ export class UserService {
           //catchError(err => throwError(err))  // This will fail after 1 error
           // catchError(err => {return of(err)})
           catchError(err => {return of({data:{id: Number(term)},error:err})}),
+          finalize(()=>{
+          
+            console.warn(`request ${term} completed`);
+          })
 
         )
     )
