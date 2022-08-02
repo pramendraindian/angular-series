@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ExternalUserCommonResponse, ExternalUserListResponse, ExternalUserResponse } from '../models/ExternalUserResponses';
 import { Observable, of } from 'rxjs';
 import { ExternalUser } from '../models/ExternalUser';
-import { map,tap,debounceTime,distinctUntilChanged,switchMap,catchError,mergeMap, delay,concatMap } from 'rxjs/operators';
+import { map,tap,debounceTime,distinctUntilChanged,switchMap,catchError,mergeMap, delay,concatMap, finalize, toArray, mergeAll } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -75,7 +75,8 @@ export class UserService {
       // distinctUntilChanged(),
       switchMap(term => this.getSingleUser(term).pipe(
           //catchError(err => throwError(err))  // This will fail after 1 error
-          catchError(err => {return of(err)})
+          // catchError(err => {return of(err)})
+          catchError(err => {return of({data:{id: Number(term)},error:err})}),
         )
     )
     );
@@ -92,8 +93,11 @@ export class UserService {
       // debounceTime(1000),
       // distinctUntilChanged(),
       concatMap(term => this.getSingleUser(term).pipe(
-          //catchError(err => throwError(err))  // This will fail after 1 error
-          catchError(err => {return of(err)})
+        // catchError(err => {return of(err)}), // Uncomment and see the difference
+        catchError(err => {return of({data:{id: Number(term)},error:err})}),
+        finalize(()=>{
+            console.warn('inner request completed');
+          })
         )
     )
     );
@@ -109,7 +113,9 @@ export class UserService {
       // distinctUntilChanged(),
       mergeMap(term =>this.getSingleUser(term).pipe(
           //catchError(err => throwError(err))  // This will fail after 1 error
-          catchError(err => {return of(err)})
+          // catchError(err => {return of(err)})
+          catchError(err => {return of({data:{id: Number(term)},error:err})}),
+
         )
     )
     );

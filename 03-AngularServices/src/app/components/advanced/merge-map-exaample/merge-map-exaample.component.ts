@@ -46,6 +46,7 @@ export class MergeMapExaampleComponent implements OnInit {
     this.myForm.controls['searchTerm'].setValue(10);
     this.myForm.controls['searchTerm'].setValue(11);
     this.myForm.controls['searchTerm'].setValue(12);
+    this.myForm.controls['searchTerm'].setValue(13);
   }
 
   lazySearch() {

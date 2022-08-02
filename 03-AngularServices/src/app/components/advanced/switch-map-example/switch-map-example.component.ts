@@ -47,6 +47,7 @@ export class SwitchMapExampleComponent implements OnInit {
     this.myForm.controls['searchTerm'].setValue(10);
     this.myForm.controls['searchTerm'].setValue(11);
     this.myForm.controls['searchTerm'].setValue(12);
+    this.myForm.controls['searchTerm'].setValue(13);
 
     /*
     const observable1=of(1,2,3,4,5,6,7,8,9,10);

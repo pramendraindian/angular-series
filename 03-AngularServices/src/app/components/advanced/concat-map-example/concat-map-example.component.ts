@@ -44,13 +44,14 @@ export class ConcatMapExampleComponent implements OnInit {
     this.myForm.controls['searchTerm'].setValue(10);
     this.myForm.controls['searchTerm'].setValue(11);
     this.myForm.controls['searchTerm'].setValue(12);
+    this.myForm.controls['searchTerm'].setValue(13);
   }
   lazySearch() {
     const observable1 = this.myForm.controls['searchTerm'].valueChanges;
     observable1.subscribe(searchTerm => { this.isLoading = true; });
     this.userService.searchUserUsingConcatMap(observable1).subscribe(
       result => {//success
-        this.isLoading = false;
+        
         console.warn(result);
         if (result instanceof HttpErrorResponse) {
           this.users = [];
@@ -66,6 +67,10 @@ export class ConcatMapExampleComponent implements OnInit {
               this.user = result.data as ExternalUser;
               console.log(this.user);
               this.users.push(this.user);
+              if(this.users.length===12)
+              {
+                this.isLoading=false;
+              }
             }
           }
         }
