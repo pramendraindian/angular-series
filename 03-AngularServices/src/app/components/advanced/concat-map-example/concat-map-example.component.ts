@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { finalize } from 'rxjs/operators';
 import { ExternalUser } from 'src/app/models/ExternalUser';
 import { UserService } from 'src/app/services/user.service';
 
@@ -51,7 +52,6 @@ export class ConcatMapExampleComponent implements OnInit {
     observable1.subscribe(searchTerm => { this.isLoading = true; });
     this.userService.searchUserUsingConcatMap(observable1).subscribe(
       result => {//success
-        
         console.warn(result);
         if (result instanceof HttpErrorResponse) {
           this.users = [];
@@ -78,11 +78,6 @@ export class ConcatMapExampleComponent implements OnInit {
       , err => { // It will never reach in case of switvhMap
         this.isLoading = false;
         console.log(err);
-      },
-      () =>// It will never reach in case of switvhMap
-      {
-        this.isLoading = false;
-        console.log('search complete')
       }
     );
 

@@ -76,11 +76,6 @@ export class MergeMapExaampleComponent implements OnInit {
       }
       , err => { // It will never reach in case of switvhMap
         console.log(err);
-      },
-      () =>// It will never reach in case of switvhMap
-      { 
-        this.isLoading = false;
-        console.log('search complete') 
       }
     );
 
