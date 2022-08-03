@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { of, from } from 'rxjs'; 
+import { concatMap,mergeMap,tap } from 'rxjs/operators';
 import { BulkLoadService } from 'src/app/services/bulk-load.service';
 
 @Component({
@@ -33,7 +35,7 @@ export class BulkLoadComponent implements OnInit {
       batchNo++;
       const curentBatchSet = postIds.splice(0, batchSize)
       // console.warn(`Batch set = ${curentBatchSet}`)
-      // this.processSpecificBatchObservable(curentBatchSet, batchNo)
+      //this.processSpecificBatchUsingConcatMapAndForkJoin(curentBatchSet, batchNo)
       await this.processSpecificBatchWithPromise(curentBatchSet, batchNo);
       //Synchronize specific call with await on Promise
       console.warn(`Processed batch# ${batchNo}`);
@@ -67,8 +69,11 @@ export class BulkLoadComponent implements OnInit {
   }
 
 
-  processSpecificBatchObservable(postIds: number[], batchNo: number) {
-     this.bulkLoad.getCommentDetails(postIds, batchNo).subscribe({
+  processSpecificBatchUsingConcatMapAndForkJoin(postIds: number[], batchNo: number) {
+    of(batchNo).pipe(
+      tap(item=>console.warn(item)),
+      concatMap(bNo=>this.bulkLoad.getCommentDetails(postIds,bNo))
+    ).subscribe({
       next: batchCommentsResponse => {
         // console.log(batchCommentsResponse);
         // Add to global queue

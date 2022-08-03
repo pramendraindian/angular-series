@@ -26,6 +26,20 @@ export class BulkLoadService {
   return forkJoin(requestList);
 }
 
+getSingleComment(userId:any) {
+ 
+    // if (index === 1) return of({message: 'Error Occured!'}); // testin with error
+    return this.http.get('https://jsonplaceholder.typicode.com/comments/' + userId).pipe(
+      //************************* Error Handling in fork Join****************************/
+      // DO ERROR HANDLING AT THE INDIDUAL API CALL
+      //// This is very very important to catch error to avoid killing observabel
+      catchError(err => of({ id: userId, isError: true, error: err }))
+           // OPTIMIZE IT WITH UNIT TESTING
+
+
+    );
+
+}
 
  
 
