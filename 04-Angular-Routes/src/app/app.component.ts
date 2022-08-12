@@ -1,4 +1,5 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DepartmentService } from './services/department.service';
 import { EmployeeService } from './services/employee.service';
 import { UserService } from './services/user.service';
@@ -11,7 +12,7 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit,OnDestroy {
   title = 'ERPSystem';
   isClosing=false;
-  constructor(private deptService: DepartmentService, public empService: EmployeeService, private userService: UserService) {
+  constructor(private deptService: DepartmentService, public empService: EmployeeService, private userService: UserService,private router:Router) {
 
   }
 
@@ -60,5 +61,13 @@ export class AppComponent implements OnInit,OnDestroy {
         this.deptService.departments = results;
       }
     )
+  }
+
+  navigateToARoute()
+  {
+    this.router.navigate(['/users']);
+    console.warn('Clicked')
+    console.warn(this.router);
+    this.router.navigateByUrl('/users');
   }
 }

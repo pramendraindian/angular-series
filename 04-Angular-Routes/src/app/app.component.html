@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-12">Router Examples</div>
-
+<button (click)="navigateToARoute()">Navigate Programmatically</button>
 </div>
 <!--Left Menu Bar-->
 <div class="row">
@@ -13,7 +13,10 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <a href="users">User List</a></div>
+      <!-- <a  routerLink="/users">User List</a>-->
+       <a  (click)="navigateToARoute()">User List</a>
+      
+      </div>
     </div>
 
   </div>
