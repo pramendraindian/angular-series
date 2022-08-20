@@ -65,9 +65,15 @@ export class AppComponent implements OnInit,OnDestroy {
 
   navigateToARoute()
   {
-    this.router.navigate(['/users']);
+    // this.router.navigate(['/users',100]);
     console.warn('Clicked')
-    console.warn(this.router);
+    //console.warn(this.router);
     this.router.navigateByUrl('/users');
+  }
+
+  navigateToARouteWithParameters()
+  {
+    this.router.navigate(['/users',100]);
+   
   }
 }

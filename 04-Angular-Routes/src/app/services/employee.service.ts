@@ -7,13 +7,21 @@ import { Employee } from '../models/Employee';
   providedIn: 'root'
 })
 export class EmployeeService {
-  employees:Employee[]=[];
-  
-  constructor(private http:HttpClient) { }
+  employees: Employee[] = [];
+  isValidUser = false;
+  constructor(private http: HttpClient) { }
+  async authenticateUser() {
+    await this.getEmployees().toPromise().then(employees => {
+      this.isValidUser = true;
+    }).catch(
+      error => {
+        this.isValidUser = false;
+      }
+    );
+  }
 
-  getEmployees():Observable<Employee[]>
-  {
-    
+  getEmployees(): Observable<Employee[]> {
+
     return this.http.get<Employee[]>('assets/EmployeeDB.json');
   }
 }
