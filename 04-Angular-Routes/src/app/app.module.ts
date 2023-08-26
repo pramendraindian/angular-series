@@ -11,6 +11,7 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
 import { UserListComponent } from './components/user-list/user-list.component';
 import { AdvancedComponent } from './components/advanced/advanced.component';
 import { BulkLoadComponent } from './components/bulk-load/bulk-load.component';
+import { TablePrinterComponent } from './components/table-printer/table-printer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { BulkLoadComponent } from './components/bulk-load/bulk-load.component';
     EmployeeListComponent,
     UserListComponent,
     AdvancedComponent,
-    BulkLoadComponent
+    BulkLoadComponent,
+    TablePrinterComponent
   ],
   imports: [
     BrowserModule,

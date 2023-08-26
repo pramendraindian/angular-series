@@ -1,4 +1,10 @@
 <div class="row">
+  <div class="col-12">Dynamic Table</div>
+  <div class="col-12"><app-table-printer [columns]="columns" [dataSet]="empService.employees"></app-table-printer></div>
+
+</div>
+
+<div class="row">
   <div class="col-12">Router Examples</div>
 <button (click)="navigateToARoute()">Navigate Programmatically</button>
 </div>

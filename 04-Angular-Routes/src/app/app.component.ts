@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { DepartmentService } from './services/department.service';
 import { EmployeeService } from './services/employee.service';
 import { UserService } from './services/user.service';
+import { Column } from './components/table-printer/table-printer.component';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,19 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit,OnDestroy {
   title = 'ERPSystem';
   isClosing=false;
+  columns:Column[]=[
+    {
+      id:'userId',
+      title:'User Id',
+      width:'50%'
+    },
+    {
+      id:'fullName',
+      title:'Full Name',
+      width:'50%'
+    }
+     
+  ]
   constructor(private deptService: DepartmentService, public empService: EmployeeService, private userService: UserService,private router:Router) {
 
   }
