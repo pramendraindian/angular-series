@@ -1,8 +1,8 @@
 import { NgFor, NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
-import { BehaviorSubject, debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs';
+import { BehaviorSubject, catchError, debounceTime, distinctUntilChanged, filter, of, switchMap } from 'rxjs';
 //import { retrievePokemonFn } from './retrieve-pokemon';
 import { DisplayPokemon } from '../../models/pokemon.model';
 import { PokemonService } from 'src/app/services/pokemon.service';
@@ -28,17 +28,27 @@ export class PokemonComponent {
   readonly min = 1;
   readonly max = 100;
   //pokemonSvc=inject(PokemonService);
+  httpError=signal<any>('');
   searchIdSub = new BehaviorSubject(1);
   currentPokemonIdSub = new BehaviorSubject(1);
-  pokemon = toSignal(this.currentPokemonIdSub.pipe(switchMap((id) => this.pokemonSvc.retrievePokemonObservable(id))), { initialValue });
+  pokemon = toSignal(this.currentPokemonIdSub.pipe(
+    switchMap((id) => this.pokemonSvc.retrievePokemonObservable(id).pipe(
+      catchError((error) => {
+        console.log(error);
+        this.httpError.set(error);
+        return of(null);
+      })
+    ))
+   
+    ), { initialValue:null });
 
   rowData = computed(() => {
-    const { id, name, height, weight } = this.pokemon();
+    //const { id, name, height, weight } = this.pokemon();
     return [
-      { text: 'Id: ', value: id },
-      { text: 'Name: ', value: name },
-      { text: 'Height: ', value: height },
-      { text: 'Weight: ', value: weight },
+      { text: 'Id: ', value: this.pokemon()?.id },
+      { text: 'Name: ', value: this.pokemon()?.name },
+      { text: 'Height: ', value: this.pokemon()?.height },
+      { text: 'Weight: ', value: this.pokemon()?.weight },
     ];
   });
 

@@ -7,8 +7,8 @@
       <ng-container *ngTemplateOutlet="details; context: { $implicit: rowData() }"></ng-container>
     </div>
     <div class="container">
-      <img [src]="pokemon().front_shiny" />
-      <img [src]="pokemon().back_shiny" />
+      <img [src]="pokemon()?.front_shiny" />
+      <img [src]="pokemon()?.back_shiny" />
     </div>
   </ng-container>
 </div>
@@ -24,3 +24,11 @@
     <span>{{ data.value }}</span>
   </label>
 </ng-template>
+<div style="color: red;">
+  <p>
+    Error Code:[{{httpError()?.status}}]
+  </p>
+  <p>
+    Description:[{{httpError()?.message}}]
+  </p>
+</div>
