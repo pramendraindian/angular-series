@@ -1,1 +1,44 @@
-<p>home works!</p>
+<div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h5>Standalone components</h5> 
+      </div>
+      <div class="card-body">
+        <h6 class="card-title">app.component.ts</h6>
+        <ul>
+            <li>standalone - true </li>
+        
+        </ul>
+        <div class="box">
+            <pre>
+                <code [innerHTML]="appts"></code>
+            </pre>
+
+        </div>
+        <h6 class="card-title">main.ts</h6>
+        <ul>
+            <li>app.module.ts - Remove the refernces of all the components. </li>
+            <li>app.routing.ts - Remove the refernces of routing.ts from App.module. </li>
+            <li>main.ts - Bootstrap app.component and relative dependencies </li>
+        </ul>
+        <div class="box">
+            <pre>
+                <code [innerHTML]="maints"></code>
+            </pre>
+
+        </div>
+
+        <h6 class="card-title">app-routes.ts</h6>
+        <ul>
+            <li>Define routes array as constant </li>
+            <li>main.ts - Bootstrap routes [provideRouter(rootRoutes)]</li>
+        </ul>
+        <div class="box">
+            <pre>
+                <code [innerHTML]="routests"></code>
+            </pre>
+
+        </div>
+      </div>
+    </div>
+  </div>
