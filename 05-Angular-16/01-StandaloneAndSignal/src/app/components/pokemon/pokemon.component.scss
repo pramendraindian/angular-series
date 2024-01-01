@@ -1,0 +1,26 @@
+:host {
+    display: block;
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+  h1 {
+    margin-bottom: 20px;
+  }
+  .pokemon-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .btn {
+    border-radius: 25%;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+  }
+  input[type="number"] {
+    padding: 0.5rem;
+  }

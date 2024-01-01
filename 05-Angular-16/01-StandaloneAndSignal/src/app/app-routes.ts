@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import {HomeComponent } from './components/home/home.component'
+import {HomeComponent } from './components/home/home.component';
 
 export const rootRoutes: Routes = [
   {
@@ -11,6 +11,11 @@ export const rootRoutes: Routes = [
     path: 'cart',
     loadComponent: () => import('./components/cart/cart.component')
       .then(x => x.CartComponent)
+  },
+  {
+    path: 'poke',
+    loadComponent: () => import('./components/pokemon/pokemon.component')
+      .then(x => x.PokemonComponent)
   },
   {
     path: '**',
