@@ -21,6 +21,6 @@ export class PokemonService {
     height: pokemon.height,
     weight: pokemon.weight,
     back_shiny: pokemon.sprites.back_shiny,
-    front_shiny: pokemon.sprites.front_shiny,
+    front_shiny: pokemon.sprites.front_shiny
   });
 }

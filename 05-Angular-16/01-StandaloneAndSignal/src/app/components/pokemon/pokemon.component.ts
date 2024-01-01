@@ -1,4 +1,4 @@
-import { NgFor, NgTemplateOutlet } from '@angular/common';
+import { CommonModule, NgFor, NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
@@ -19,7 +19,7 @@ const initialValue: DisplayPokemon = {
 @Component({
   selector: 'app-pokemon',
   standalone: true,
-  imports: [FormsModule, NgTemplateOutlet, NgFor],
+  imports: [CommonModule,FormsModule, NgTemplateOutlet, NgFor],
   templateUrl: './pokemon.component.html',
   styleUrls: ['./pokemon.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -45,10 +45,10 @@ export class PokemonComponent {
   rowData = computed(() => {
     //const { id, name, height, weight } = this.pokemon();
     return [
-      { text: 'Id: ', value: this.pokemon()?.id },
-      { text: 'Name: ', value: this.pokemon()?.name },
-      { text: 'Height: ', value: this.pokemon()?.height },
-      { text: 'Weight: ', value: this.pokemon()?.weight },
+      { text: 'Id', value: this.pokemon()?.id },
+      { text: 'Name', value: this.pokemon()?.name },
+      { text: 'Height', value: this.pokemon()?.height },
+      { text: 'Weight', value: this.pokemon()?.weight },
     ];
   });
 
@@ -56,7 +56,16 @@ export class PokemonComponent {
     const newId = this.currentPokemonIdSub.getValue() + delta;
     this.currentPokemonIdSub.next(Math.min(Math.max(this.min, newId), this.max));
   }
-
+code=`
+pokemon = toSignal(this.currentPokemonIdSub.pipe(
+  switchMap((id) => this.pokemonSvc.retrievePokemonObservable(id).pipe(
+    catchError((error) => {
+      console.log(error);
+      this.httpError.set(error);
+      return of(null);
+    })
+  ))
+`;
   constructor(private pokemonSvc:PokemonService) {
     this.searchIdSub
       .pipe(

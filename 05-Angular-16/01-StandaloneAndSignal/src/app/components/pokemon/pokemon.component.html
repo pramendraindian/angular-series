@@ -1,34 +1,71 @@
-<h2>
-  Use Angular signal to display the first 100 pokemon images
-</h2>
-<div>
-  <ng-container>
-    <div class="pokemon-container">
-      <ng-container *ngTemplateOutlet="details; context: { $implicit: rowData() }"></ng-container>
-    </div>
-    <div class="container">
-      <img [src]="pokemon()?.front_shiny" />
-      <img [src]="pokemon()?.back_shiny" />
-    </div>
-  </ng-container>
-</div>
 <div class="container">
-  <button class="btn" *ngFor="let delta of [-2, -1, 1, 2]" (click)="updatePokemonId(delta)">{{delta < 0 ? delta : '+' +
-      delta }}</button>
-      <input type="number" [ngModel]="searchIdSub.getValue()" (ngModelChange)="searchIdSub.next($event)" name="searchId"
-        id="searchId" />
+  <div class="card">
+    <div class="card-header">
+      <h5>Signal - convert observabe to signal</h5>
+    </div>
+    <div class="card-body">
+      <h6 class="card-title">toSignal() method</h6>
+      <ul>
+        <li>Pass observable as first argument</li>
+        <li>Pass initialValue as second argument</li>
+        <li>Refer code befind for more detailed info</li>
+      </ul>
+      <div class="box">
+        <h6 class="card-title">Example</h6>
+        <p>
+          <code [innerHTML]="code"></code>
+        </p>
+        <ng-container>
+          <div class="pokemon-container">
+            <ng-container *ngTemplateOutlet="details; context: { $implicit: rowData() }"></ng-container>
+          </div>
+         
+        </ng-container>
+        <ng-template #details let-rowData>
+          <table class="table">
+            <thead>
+              <tr>
+                <td *ngFor="let data of rowData">{{ data.text }}</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td *ngFor="let data of rowData">{{ data.value }}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="5">
+                <img [src]="pokemon()?.front_shiny" />
+                <img [src]="pokemon()?.back_shiny" />
+              </td>
+              </tr>
+              <tr *ngIf="httpError()">
+                <td colspan="5" style="color: red;">
+                  <p>
+                    Error Code:[{{httpError()?.status}}]
+                  </p>
+                  <p>
+                    Description:[{{httpError()?.message}}]
+                  </p>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+
+        </ng-template>
+        <div class="container">
+          <button class="btn btn-primary" *ngFor="let delta of [-2, -1, 1, 2]" (click)="updatePokemonId(delta)">{{delta < 0 ? delta
+              : '+' + delta }}</button>
+              <input type="number" [ngModel]="searchIdSub.getValue()" (ngModelChange)="searchIdSub.next($event)"
+                name="searchId" id="searchId" />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<ng-template #details let-rowData>
-  <label *ngFor="let data of rowData">
-    <span style="font-weight: bold; color: #aaa">{{ data.text }}</span>
-    <span>{{ data.value }}</span>
-  </label>
-</ng-template>
-<div style="color: red;">
-  <p>
-    Error Code:[{{httpError()?.status}}]
-  </p>
-  <p>
-    Description:[{{httpError()?.message}}]
-  </p>
+<div>
+
 </div>
+
+
