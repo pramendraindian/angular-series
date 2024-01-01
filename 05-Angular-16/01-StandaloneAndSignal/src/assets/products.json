@@ -1,5 +1,6 @@
 [
-    { "name": "Samsung TV 40 Inches", "price": 10000 },
-    { "name": "Apple IPhone 15", "price": 15000 },
-    { "name": "Canon Camera", "price": 20000 }
+    { "name": "Samsung TV 40 Inches", "price": 1000 },
+    { "name": "Apple IPhone 15", "price": 1500 },
+    { "name": "Canon Camera", "price": 2000 }
+    ,{ "name": "Air Conditioner 2 Ton", "price": 2500 }
 ]

@@ -1,7 +1,41 @@
-<ul>
-    <li *ngFor="let product of productList()">
-      {{product.name}} - ${{product.price}}
-      <button (click)="removeItem(product)">Remove</button>
-    </li>
-  </ul>
-  Total Price: ${{totalPrice()}}
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h5>Angular Signal Example</h5>
+    </div>
+    <div class="card-body">
+      <h6 class="card-title">Signal Methods</h6>
+      <ul>
+        <li>Define a signal</li>
+        <li>set method - use signal set method to update signal</li>
+        <li>compute method - use compute method to calculate the dependent signals</li>
+      </ul>
+      <div class="box">
+        <h6 class="card-title">Example</h6>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of productList()">
+              <td> {{product.name}}</td>
+              <td>${{product.price}}</td>
+              <td><button (click)="removeItem(product)" class="btn btn-danger">Remove</button></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="text-end"><strong>Total Price:</strong></td>
+              <td>${{totalPrice()}}</td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
