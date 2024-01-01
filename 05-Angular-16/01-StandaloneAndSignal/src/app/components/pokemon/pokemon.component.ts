@@ -1,10 +1,12 @@
 import { NgFor, NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { BehaviorSubject, debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs';
-import { retrievePokemonFn } from './retrieve-pokemon';
+//import { retrievePokemonFn } from './retrieve-pokemon';
 import { DisplayPokemon } from '../../models/pokemon.model';
+import { PokemonService } from 'src/app/services/pokemon.service';
+
 
 const initialValue: DisplayPokemon = {
   id: -1,
@@ -25,11 +27,10 @@ const initialValue: DisplayPokemon = {
 export class PokemonComponent {
   readonly min = 1;
   readonly max = 100;
-
+  //pokemonSvc=inject(PokemonService);
   searchIdSub = new BehaviorSubject(1);
-  retrievePokemon = retrievePokemonFn();
   currentPokemonIdSub = new BehaviorSubject(1);
-  pokemon = toSignal(this.currentPokemonIdSub.pipe(switchMap((id) => this.retrievePokemon(id))), { initialValue });
+  pokemon = toSignal(this.currentPokemonIdSub.pipe(switchMap((id) => this.pokemonSvc.retrievePokemonObservable(id))), { initialValue });
 
   rowData = computed(() => {
     const { id, name, height, weight } = this.pokemon();
@@ -46,7 +47,7 @@ export class PokemonComponent {
     this.currentPokemonIdSub.next(Math.min(Math.max(this.min, newId), this.max));
   }
 
-  constructor() {
+  constructor(private pokemonSvc:PokemonService) {
     this.searchIdSub
       .pipe(
         debounceTime(300),

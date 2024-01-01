@@ -9,8 +9,8 @@ import { map } from 'rxjs/operators';
 export class PokemonService {
 
   constructor(private httpClient:HttpClient) { }
-  retrievePokemonObservable = () => {
-    return (id: number) => this.httpClient.get<Pokemon>(`https://pokeapi.co/api/v2/pokemon/${id}`)
+  retrievePokemonObservable(id:number){
+    return this.httpClient.get<Pokemon>(`https://pokeapi.co/api/v2/pokemon/${id}`)
       .pipe(map((pokemon) => this.pokemonTransformer(pokemon)));
   }
 
