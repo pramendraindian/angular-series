@@ -18,6 +18,11 @@ export const rootRoutes: Routes = [
       .then(x => x.PokemonComponent)
   },
   {
+    path: 'rxjs',
+    loadComponent: () => import('./components/rx-js-examples/rx-js-examples.component')
+      .then(x => x.RxJsExamplesComponent)
+  },
+  {
     path: '**',
     redirectTo: '',
   },
